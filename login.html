@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title id="title"></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="font/css/rhinos.css">
+
+
+</head>
+
+<body>
+
+  $(if chap-id)
+  <form name="sendin" action="$(link-login-only)" method="post">
+    <input type="hidden" name="username" />
+    <input type="hidden" name="password" />
+    <input type="hidden" name="dst" value="$(link-orig)" />
+    <input type="hidden" name="popup" value="true" />
+  </form>
+
+  <script type="text/javascript" src="md5.js"></script>
+  <script type="text/javascript">
+    function doLogin() {
+      document.sendin.username.value = document.login.username.value;
+      document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +
+        '$(chap-challenge)');
+      document.sendin.submit();
+      return false;
+    }
+  </script>
+  $(endif)
+
+
+
+
+  <div class="container">
+    <div class="theme">
+      <button class="button toggle" id="theme">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M18 9.52V6h-3.52L12 3.52 9.52 6H6v3.52L3.52 12 6 14.48V18h3.52L12 20.48 14.48 18H18v-3.52L20.48 12 18 9.52zm-6 7.98c-3.03 0-5.5-2.47-5.5-5.5S8.97 6.5 12 6.5s5.5 2.47 5.5 5.5-2.47 5.5-5.5 5.5z"
+            opacity=".3" />
+          <path
+            d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6.5c-3.03 0-5.5 2.47-5.5 5.5s2.47 5.5 5.5 5.5 5.5-2.47 5.5-5.5-2.47-5.5-5.5-5.5zm0 9c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="card">
+      <center><img src="logo.png" style="margin-bottom:0px;width:120px;" /></center>
+      <div class="card__content">
+        <h3 class="card__title"></i></h3>
+
+
+
+
+        <div class="box">
+          <button id="btnvrc" class="small-button" onclick="voucher();">Voucher</button>
+          <button id="btnmem" class="small-button" onclick="member();">Member</button>
+        </div>
+
+        <form autocomplete="off" name="login" action="$(link-login-only)" method="post" $(if chap-id)
+          onSubmit="return doLogin()" $(endif)>
+
+          <div class="input-fields">
+
+            <div class="text-input-group">
+              <input type="hidden" name="dst" value="$(link-orig)" />
+            </div>
+
+            <div class="text-input-group">
+              <input type="hidden" name="popup" value="true" />
+            </div>
+
+
+            <div class="text-input-group">
+              <input id="codevcr" class="username" name="username" type="text" value="$(username)" autocomplete="off" />
+            </div>
+
+            <div class="text-input-group">
+              <input class="password" name="password" placeholder="Password" type="hidden" />
+            </div>
+
+            <div class="card__footer">
+              <button class="button" type="submit">Login</button>
+            </div>
+
+          </div>
+
+        </form>
+        $(if error)<div class="notice">$(error)</div>$(endif)
+      </div>
+
+
+
+
+      <!-- INFO HARGA  -->
+
+      <!-- <div class="harga">
+
+        <table class="table">
+
+          <tr>
+            <th>Validity</th>
+            <th>Speed</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td><i class="icon-ticket"></i>&nbsp;30 Days</td>
+            <td>Unlimited</td>
+            <td>SAR - 30</td>
+          </tr>
+
+
+        </table> -->
+
+    </div>
+
+    <!-- INFO HARGA  -->
+  </div>
+  </div>
+
+
+  </div>
+
+  </div>
+
+  <script src="style.js"></script>
+</body>
+
+</html>
